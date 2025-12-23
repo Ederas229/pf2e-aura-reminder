@@ -7,7 +7,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import packageJSON from "./package.json" with { type: "json" };
 
-const PACKAGE_ID = "modules/dfreds-module-template-ts";
+const PACKAGE_ID = "modules/pf2e-aura-reminder";
 
 const config = Vite.defineConfig(({ command, mode }): Vite.UserConfig => {
     const buildMode =
@@ -50,19 +50,18 @@ const config = Vite.defineConfig(({ command, mode }): Vite.UserConfig => {
         fs.writeFileSync("./index.html", `<h1>${message}</h1>\n`);
         if (!fs.existsSync("./styles")) fs.mkdirSync("./styles");
         fs.writeFileSync(
-            "./styles/dfreds-module-template-ts.css",
+            "./styles/pf2e-aura-reminder.css",
             `/** ${message} */\n`,
         );
         fs.writeFileSync(
-            "./dfreds-module-template-ts.mjs",
+            "./pf2e-aura-reminder.mjs",
             `/** ${message} */\n\nwindow.global = window;\nimport "./src/ts/module.ts";\n`,
         );
         fs.writeFileSync("./vendor.mjs", `/** ${message} */\n`);
     }
 
     return {
-        base:
-            command === "build" ? "./" : `/modules/dfreds-module-template-ts/`,
+        base: command === "build" ? "./" : `/modules/pf2e-aura-reminder/`,
         publicDir: "static",
         define: {
             BUILD_MODE: JSON.stringify(buildMode),
@@ -74,7 +73,7 @@ const config = Vite.defineConfig(({ command, mode }): Vite.UserConfig => {
             minify: false,
             sourcemap: buildMode === "development",
             lib: {
-                name: "dfreds-module-template-ts",
+                name: "pf2e-aura-reminder",
                 entry: "src/ts/module.ts",
                 formats: ["es"],
                 fileName: "module",
@@ -86,9 +85,9 @@ const config = Vite.defineConfig(({ command, mode }): Vite.UserConfig => {
                     /^@common\//,
                 ],
                 output: {
-                    assetFileNames: "styles/dfreds-module-template-ts.css",
+                    assetFileNames: "styles/pf2e-aura-reminder.css",
                     chunkFileNames: "[name].mjs",
-                    entryFileNames: "dfreds-module-template-ts.mjs",
+                    entryFileNames: "pf2e-aura-reminder.mjs",
                     manualChunks: {
                         vendor: Object.keys(packageJSON.dependencies)
                             ? Object.keys(packageJSON.dependencies)
@@ -114,8 +113,7 @@ const config = Vite.defineConfig(({ command, mode }): Vite.UserConfig => {
             port: 30001,
             open: false,
             proxy: {
-                "^(?!/modules/dfreds-module-template-ts/)":
-                    "http://localhost:30000/",
+                "^(?!/modules/pf2e-aura-reminder/)": "http://localhost:30000/",
                 "/socket.io": {
                     target: "ws://localhost:30000",
                     ws: true,
@@ -156,10 +154,7 @@ function deleteLockFilePlugin(): Vite.Plugin {
         },
         writeBundle(outputOptions) {
             const outDir = outputOptions.dir ?? "";
-            const lockFile = path.resolve(
-                outDir,
-                "dfreds-module-template-ts.lock",
-            );
+            const lockFile = path.resolve(outDir, "pf2e-aura-reminder.lock");
             fs.rmSync(lockFile);
         },
     };
