@@ -79,11 +79,6 @@ const config = Vite.defineConfig(({ command, mode }): Vite.UserConfig => {
                 fileName: "module",
             },
             rollupOptions: {
-                external: [
-                    // Foundry VTT internal modules
-                    /^@client\//,
-                    /^@common\//,
-                ],
                 output: {
                     assetFileNames: "styles/pf2e-aura-reminder.css",
                     chunkFileNames: "[name].mjs",

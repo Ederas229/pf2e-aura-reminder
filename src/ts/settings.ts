@@ -1,8 +1,8 @@
-import { MODULE_ID } from "./constants.ts";
+// import { MODULE_ID } from "./constants.ts";
 
 class Settings {
     // Settings keys
-    #SAMPLE = "sample";
+    /* #SAMPLE = "sample";
 
     register(): void {
         game.settings.register(MODULE_ID, this.#SAMPLE, {
@@ -21,7 +21,7 @@ class Settings {
 
     async setSample(value: boolean): Promise<unknown> {
         return game.settings.set(MODULE_ID, this.#SAMPLE, value);
-    }
+    } */
 }
 
 export { Settings };

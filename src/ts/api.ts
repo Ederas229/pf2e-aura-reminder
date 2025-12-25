@@ -1,4 +1,4 @@
-import type Module from "@client/packages/module.d.mts";
+import type Module from "foundry-pf2e/foundry/client/packages/module.mjs";
 
 interface ThisModule extends Module {
     api: ThisApi;

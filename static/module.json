@@ -8,7 +8,7 @@
         "verified": 13,
         "maximum": 13
     },
-    "esmodules": ["vendor.mjs", "pf2e-aura-reminder.mjs"],
+    "esmodules": ["pf2e-aura-reminder.mjs"],
     "scripts": [],
     "styles": ["styles/pf2e-aura-reminder.css"],
     "packs": [],
